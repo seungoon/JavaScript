@@ -1,0 +1,14 @@
+１．JST が選択可能なマシンの場合：
+  const japanStandardTime = new Date().toLocaleString({ timeZone: 'Asia/Tokyo' });
+  new Date(japanStandardTime).getHours();
+  // 15
+  new Date(new Date().toLocaleString({ timeZone: 'Asia/Tokyo' })).getTime();
+  // 1552978393000
+
+２．JST が選択できないマシンの場合
+  new Date().getTimeZoneOffset();
+  // -540 JST
+  // 0 UTC
+
+  new Date(Date.now() + ((new Date().getTimezoneOffset() + (9 * 60)) * 60 * 1000));
+  // どちらで実行しても同じ結果
